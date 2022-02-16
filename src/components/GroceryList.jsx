@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './GroceryList.css';
 export default function GroceryList({ items }) {
   return (
     <div>

@@ -1,12 +1,17 @@
 import React from 'react';
 
-export default function AddItem() {
+export default function AddItem({ handleAddItem, text, setText }) {
   return (
     <form>
       <label>
-        <input type="text" placeholder="grocery item"></input>
+        <input
+          value={text}
+          type="text"
+          placeholder="grocery item"
+          onChange={(e) => setText(e.target.value)}
+        ></input>
       </label>
-      <button>add item</button>
+      <button onClick={(e) => handleAddItem(e, text)}>add item</button>
     </form>
   );
 }

@@ -11,6 +11,8 @@ const initialItems = [
 ];
 
 export default function Shopping() {
+  const [text, setText] = useState('');
+
   function itemsReducer(items, action) {
     switch (action.type) {
       case 'added': {
@@ -34,7 +36,8 @@ export default function Shopping() {
   }
   const [items, dispatch] = useReducer(itemsReducer, initialItems);
 
-  const handleAddItem = (text) => {
+  const handleAddItem = (e, text) => {
+    e.preventDefault();
     dispatch({
       type: 'added',
       id: items.length + 1,
@@ -59,7 +62,7 @@ export default function Shopping() {
   return (
     <>
       <h1>grocery list</h1>
-      <AddItem onAddItem={handleAddItem} />
+      <AddItem handleAddItem={handleAddItem} text={text} setText={setText} />
       <GroceryList
         items={items}
         onChangeItem={handleChangeItem}
