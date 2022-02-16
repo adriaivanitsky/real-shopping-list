@@ -32,5 +32,37 @@ export default function Shopping() {
   }
   const [items, dispatch] = useReducer(itemsReducer, initialItems);
 
-  return <div>Shopping</div>;
+  const handleAddItem = (text) => {
+    dispatch({
+      type: 'added',
+      id: items.length + 1,
+      text,
+    });
+  };
+
+  const handleChangeItem = (task) => {
+    dispatch({
+      type: 'changed',
+      task,
+    });
+  };
+
+  const handleDeleteItem = (taskId) => {
+    dispatch({
+      type: 'deleted',
+      id: taskId,
+    });
+  };
+
+  return (
+    <>
+      <h1>grocery list</h1>
+      <AddItem onAddItem={handleAddItem} />
+      <ItemList
+        items={items}
+        onChangeItem={handleChangeItem}
+        onDeleteItem={handleDeleteItem}
+      />
+    </>
+  );
 }
