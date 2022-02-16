@@ -1,6 +1,8 @@
 // item list, add item , edit, delete
 // reducer goes in here
 import { useReducer, useState } from 'react';
+import AddItem from '../components/AddItem';
+import GroceryList from '../components/GroceryList';
 
 const initialItems = [
   { id: 0, text: 'spinach', done: false },
@@ -58,7 +60,7 @@ export default function Shopping() {
     <>
       <h1>grocery list</h1>
       <AddItem onAddItem={handleAddItem} />
-      <ItemList
+      <GroceryList
         items={items}
         onChangeItem={handleChangeItem}
         onDeleteItem={handleDeleteItem}
