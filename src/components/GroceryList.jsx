@@ -1,14 +1,13 @@
 import React from 'react';
 import './GroceryList.css';
+import Item from './Item';
 
 export default function GroceryList({ items, onDeleteItem }) {
   return (
     <div>
       {items.map((item) => (
         <label key={item.id}>
-          <input type="checkbox"></input>
-          {item.text}
-          <button onClick={() => onDeleteItem(item.id)}>delete</button>
+          <Item onDeleteItem={onDeleteItem} item={item} />
         </label>
       ))}
     </div>
