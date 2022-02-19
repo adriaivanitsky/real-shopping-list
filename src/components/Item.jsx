@@ -11,7 +11,7 @@ export default function Item({ item, onDeleteItem, onChangeItem }) {
         <input
           defaultValue={item.text}
           onChange={(e) => {
-            onChangeItem({ ...{ item, text: e.target.value } });
+            onChangeItem({ ...item, text: e.target.value });
           }}
         />
         <button onClick={() => setEdit(false)}>save</button>
