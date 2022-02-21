@@ -1,6 +1,10 @@
 import React from 'react';
+import { useItems } from '../context/ItemsContext';
+import { useState } from 'react';
 
-export default function AddItem({ handleAddItem, text, setText }) {
+export default function AddItem() {
+  const { handleAddItem } = useItems();
+  const [text, setText] = useState('');
   return (
     <form>
       <label>

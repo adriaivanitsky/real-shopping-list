@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useItems } from '../context/ItemsContext';
 // import itemReducer from '../views/Shopping';
 
-export default function Item({ item, onDeleteItem, onChangeItem }) {
+export default function Item({ item }) {
   const [edit, setEdit] = useState(false);
+  const { handleDeleteItem, handleChangeItem } = useItems();
   let itemContent;
 
   if (edit) {
@@ -11,7 +13,7 @@ export default function Item({ item, onDeleteItem, onChangeItem }) {
         <input
           defaultValue={item.text}
           onChange={(e) => {
-            onChangeItem({ ...item, text: e.target.value });
+            handleChangeItem({ ...item, text: e.target.value });
           }}
         />
         <button onClick={() => setEdit(false)}>save</button>
@@ -29,7 +31,7 @@ export default function Item({ item, onDeleteItem, onChangeItem }) {
     <>
       <input type="checkbox"></input>
       {itemContent}
-      <button onClick={() => onDeleteItem(item.id)}>delete</button>
+      <button onClick={() => handleDeleteItem(item.id)}>delete</button>
     </>
   );
 }

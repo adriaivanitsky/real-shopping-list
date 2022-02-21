@@ -1,4 +1,10 @@
-import { useContext, createContext } from 'react';
+import { useContext, createContext, useReducer } from 'react';
+
+const initialItems = [
+  { id: 0, text: 'spinach', done: false },
+  { id: 1, text: 'oats', done: false },
+  { id: 2, text: 'almonds', done: false },
+];
 
 export const ItemsContext = createContext();
 
