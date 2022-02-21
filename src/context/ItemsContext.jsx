@@ -57,4 +57,11 @@ export const ItemsProvider = ({ children }) => {
   );
 };
 
-export const useItems = () => {};
+export const useItems = () => {
+  const context = useContext(ItemsContext);
+
+  if (context === undefined) {
+    throw new Error('useItems may not be used outside of ItemsProvider');
+  }
+  return context;
+};
