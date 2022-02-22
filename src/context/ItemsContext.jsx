@@ -25,6 +25,9 @@ export const ItemsProvider = ({ children }) => {
       case 'deleted': {
         return items.filter((item) => item.id !== action.id);
       }
+      case 'cleared': {
+        return [];
+      }
       default: {
         throw Error(`Unknown action: ${action.type}`);
       }
@@ -54,9 +57,22 @@ export const ItemsProvider = ({ children }) => {
       id: taskId,
     });
   };
+
+  const handleClear = () => {
+    dispatch({
+      type: 'cleared',
+    });
+  };
+
   return (
     <ItemsContext.Provider
-      value={{ handleChangeItem, handleAddItem, handleDeleteItem, items }}
+      value={{
+        handleChangeItem,
+        handleAddItem,
+        handleDeleteItem,
+        items,
+        handleClear,
+      }}
     >
       {children}
     </ItemsContext.Provider>
