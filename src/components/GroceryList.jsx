@@ -1,16 +1,18 @@
 import React from 'react';
 import './GroceryList.css';
 import Item from './Item';
-import { useItems } from '../context/ItemsContext';
 
-export default function GroceryList() {
-  const { items } = useItems();
+export default function GroceryList({ items, onDeleteItem, onChangeItem }) {
   return (
     <div>
       {items.map((item) => (
-        <div key={item.id}>
-          <Item item={item} />
-        </div>
+        <label key={item.id}>
+          <Item
+            onDeleteItem={onDeleteItem}
+            item={item}
+            onChangeItem={onChangeItem}
+          />
+        </label>
       ))}
     </div>
   );
