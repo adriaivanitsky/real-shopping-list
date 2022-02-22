@@ -15,7 +15,14 @@ export default function AddItem() {
           onChange={(e) => setText(e.target.value)}
         ></input>
       </label>
-      <button onClick={(e) => handleAddItem(e, text)}>add item</button>
+      <button
+        onClick={(e) => {
+          handleAddItem(e, text);
+          setText('');
+        }}
+      >
+        add item
+      </button>
     </form>
   );
 }
