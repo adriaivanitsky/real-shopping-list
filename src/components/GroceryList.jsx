@@ -8,9 +8,9 @@ export default function GroceryList() {
   return (
     <div>
       {items.map((item) => (
-        <label key={item.id}>
+        <div key={item.id}>
           <Item item={item} />
-        </label>
+        </div>
       ))}
     </div>
   );

@@ -11,19 +11,24 @@ export default function Item({ item }) {
     itemContent = (
       <>
         <input
+          aria-label={`editInput ${item.text}`}
           defaultValue={item.text}
           onChange={(e) => {
             handleChangeItem({ ...item, text: e.target.value });
           }}
         />
-        <button onClick={() => setEdit(false)}>save</button>
+        <button aria-label={`save ${item.text}`} onClick={() => setEdit(false)}>
+          save
+        </button>
       </>
     );
   } else {
     itemContent = (
       <>
         <span>{item.text}</span>
-        <button onClick={() => setEdit(true)}>edit</button>
+        <button aria-label={`edit ${item.text}`} onClick={() => setEdit(true)}>
+          edit
+        </button>
       </>
     );
   }
